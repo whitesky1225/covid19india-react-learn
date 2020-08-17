@@ -1,3 +1,6 @@
+### project description
+这个项目是通过模仿实战来学习react hooks的项目，[原项目地址](https://github.com/covid19india/covid19india-react)
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
