@@ -76,7 +76,7 @@ function Navbar({
 
         {windowSize.width > 769 && (
           <React.Fragment>
-            {/* <Link to="/">
+            <Link to="/">
               <span>
                 <Icon.Home {...activeNavIcon("/")} />
               </span>
@@ -90,7 +90,7 @@ function Navbar({
               <span>
                 <Icon.HelpCircle {...activeNavIcon("/about")} />
               </span>
-            </Link> */}
+            </Link>
             <span>
               <SunMoon {...{ darkMode }} />
             </span>

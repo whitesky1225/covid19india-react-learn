@@ -1,3 +1,5 @@
+export const API_ROOT_URL = 'https://api.covid19india.org/v4/min';
+
 export const MAP_TYPES = {
   COUNTRY: 0,
   STATE: 1,
@@ -209,6 +211,9 @@ Object.keys(STATE_NAMES).map((key, index) => {
   stateCodes.push({ code: key, name: STATE_NAMES[key] });
   return null;
 });
+export const UPDATES_COUNT = 5;
 export const STATE_CODES = stateCodesMap;
 export const STATE_CODES_ARRAY = stateCodes;
 
+export const ISO_DATE_REGEX = /^\d{4}-([0]\d|1[0-2])-([0-2]\d|3[01])$/g;
+export const INDIA_ISO_SUFFIX = 'T00:00:00+05:30';

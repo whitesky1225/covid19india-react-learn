@@ -1,4 +1,7 @@
 import React, { useState, useEffect } from "react";
+import Footer from './Footer'
+import { Helmet } from "react-helmet";
+
 const DATA_URL = "https://api.covid19india.org/website_data.json";
 function About() {
   const [faq, setFaq] = useState([]);
@@ -18,6 +21,9 @@ function About() {
   };
   return (
     <React.Fragment>
+      <Helmet>
+        <title>About - covid19india.org</title>
+      </Helmet>
       <div className="About">
         {faq.map((faq, index) => {
           return (
@@ -32,6 +38,7 @@ function About() {
           );
         })}
       </div>
+      <Footer />
     </React.Fragment>
   );
 }

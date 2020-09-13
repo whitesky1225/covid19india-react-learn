@@ -1,10 +1,23 @@
-import React, { lazy, Suspense } from "react";
+import React, { lazy, Suspense,useState } from "react";
 import { Helmet } from "react-helmet";
+import useStickySWR from '../hooks/useStickySWR'
+import { fetcher } from "../utils/commonFunctions";
+import {API_ROOT_URL} from '../constants';
 
 const Footer = lazy(() => import("./Footer"));
 const Search = lazy(() => import("./Search"));
-
+const Actions = lazy(()=>import('./Actions'))
 function Home() {
+  const [date,setDate] = useState('')
+  const {data: timeseries} = useStickySWR(
+    `${API_ROOT_URL}/timeseries.min.json`,
+    fetcher,
+    {
+      revalidateOnMount: true,
+      refreshInterval: 100000,
+    }
+  );
+  console.log('useStickySWR',timeseries)
   return (
     <React.Fragment>
       <Helmet>
@@ -21,17 +34,14 @@ function Home() {
               <Search />
             </Suspense>
 
-            {/* {timeseries && (
+            {timeseries && (
               <Suspense fallback={<div style={{minHeight: '56px'}} />}>
-                <Actions
-                  {...{
-                    setDate,
-                    dates: Object.keys(timeseries['TT']).reverse(),
-                    date,
-                  }}
-                />
+                <Actions {...{setDate,
+                  // dates:Object.keys(timeseries['TT']?.dates).reverse(),  
+                  dates:Object.keys(timeseries['TT'].dates).reverse()
+                  }}/>
               </Suspense>
-            )} */}
+            )}
           </div>
 
           <div style={{ position: "relative" }}>
